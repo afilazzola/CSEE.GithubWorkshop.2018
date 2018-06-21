@@ -1,0 +1,14 @@
+name: "YorkU.GLM.2017-04-28"
+navbar:
+  title: "YorkU.GLM.2017-04-28"
+  left:
+    - text: "info"
+      href: index.html
+    - text: "R.basics"
+      href: r.basics.html
+    - text: "GLM.intro"
+      href: GLM.intro.html
+output_dir: "."
+output:
+  html_document:
+    theme: sandstone

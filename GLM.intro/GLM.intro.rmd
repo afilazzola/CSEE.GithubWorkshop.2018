@@ -1,0 +1,146 @@
+---
+title: Introduction to Generalized Linear Models
+author: "Alex Filazzola"
+date: "April 28 2017"
+output:
+  html_document:
+    theme: sandstone
+    toc: true
+    toc_float: true
+---
+
+### 2.0 What is a GLM?
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](regression.png)
+
+A generalized linear model (GLM) is a statistical test that compares a response variable to a series of predictors. It shares a lot of similarities to typical ordinary least squares analyses such as linear regression, ANOVAs, and ANCOVAs. The major difference and the reason why it is so appealing to analysts is that GLMs can use non-normal data. 
+
+First we need to touch upon a bit of math to understand how the GLM differs from linear regressions. The form for a linear regression is as follows:
+
+`E [Y] = β X + ε`
+
+This equation states that the expected value of a dependent variable (E[Y]) is determined by the value of a predictor variable (X) multiplied by a parameter coefficient (β) plus a residual (ε). In other words, your response is determined by your predictor multiplied by some value plus or minus some difference. 
+
+Ex. Let's say that you are a jogger that runs every day and you want to determine the speed that you run at. You record the duration and distance that you run every day. Thus, the predictor is the duration of your run per day, the response is the distance that was run, and the parameter coefficient is the speed that you run at. The residuals in this model are represented by unexplained variation from this relationship, such as you having to stop to tie your shoe that would increase the length but not the distance. 
+
+```{r}
+
+duration <- c(30,60,45,44,36,58,57,22,25)
+distance <- c(2.5,5.1,3.9,3.9,3,4.9,4.8,1.7,2.1)
+
+plot(duration,distance)
+```
+
+To determine this parameter coefficient we run a linear model using the `~` tilda as the regressor. The formula is represented as such:
+
+```{r}
+m1 <- lm(distance~duration) ## linear model with response ~ predictor
+summary(m1) ## see output of model
+```
+
+Here the parameter coefficient is under Estimate as 0.087 kilometres per minute or 5.22 kph. We also notice that the p value is extremely small and the R squared close to 1. These inform us that the model fits accurately. We can plot this relationship using the `abline` function. The distance between the line and each point is the residuals `ε`
+
+```{r}
+plot(duration,distance)
+abline(m1, col="red") ## adds line from model
+```
+
+The GLM is extremely similar to that of the LM in this regard. However, where the GLM differs is that it has an extra parameter called a "link function" (g^-1^). The link function determines how the mean of the response is related to the predictor. Thus, the GLM is represented as:
+
+`E [Y] = (β X + ε) * g^-1`
+
+Why use a GLM? There are three reasons why GLMs may be more appropriate:
+
+* The response variable Yi is not normally distributed or the range is restricted (e.g. binomial, Poisson)
++ The variance of Y depends on the mean. 
++ GLMs can fit to particular distributions without transformations. The benefits of this include i) the homogeneity of variance does NOT need to be satisfied and ii) the response variable does not need to be changed. 
+
+This last assumption has some associated complexities that could be read more on [here](http://stats.stackexchange.com/questions/67547/when-to-use-gamma-glms). However, as a rule, log transforming a response variable and then fitting it to a normal distribution is not the same as conducting a GLM with a log link. 
+
+`E(log(Y)) ≠ log(E(Y))`
+
+### 2.1 Working example of a GLM
+
+To best understand how a GLM is executed, it is a good idea to go through an example. As said above, at the most basic, a GLM compares a response to one or more predictors. Let us consider a population of people that have a disease. Three drugs are being considered as potentially curing this disease. Eighty people are randomly divided into four groups, three for each drug treatment and one as a control. We would like to see if a drug was effective. 
+
+This is an example of a logistic regression that is a member of the GLM family fit to a binomial distribution. The response variable here is not normal because the outcome of an individual can only be two values: 1 = cured or 0 = not cured. 
+
+```{r}
+##load data
+response <- c(1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,1,1,1,1,0,0,1,0,1,1,1,0,1,0,0,0,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1)
+predictor <- c(rep("control",20),rep("drug1",20),rep("drug2",20),rep("drug3",20))
+drug.trial <- data.frame(predictor,response)
+```
+
+The formula has the same syntax as the LM shown above. The response is followed by the tilda and the predictors. Here, we also specify where the data is coming from. In this case it is coming from the drug.trial data frame we created. Lastly, the main nuance of using the GLM function is the specification of a family. Since our data is binary and follows a binomial distribution, that is what we refer to it as. 
+```{r}
+m2<- glm(response~predictor, data=drug.trial, family="binomial") ##glm for drugs potential to curse
+
+summary(m2) ##output of model
+```
+
+The output of the model reveals lots of information. The most important things to look at are the coefficients and the residual deviance. The GLM takes one of the predictor factors and treats it as a "dummy" variable. The result is that all the other factors are compared against that first value. These P-values therefore represent a comparison of each drug to the control which in itself is interesting, but not exactly what we are looking for. It is also important to examine the residual deviance and the residual degrees of freedom. As a general rule of thumb, the deviance should not be more than double the degrees of freedom, otherwise your data is overdispersed. You can read more here about [dummy variables](http://stats.stackexchange.com/questions/94010/understanding-dummy-manual-or-automated-variable-creation-in-glm) and [overdisperson](https://sada2013.sciencesconf.org/16139/document).
+
+The summary results does not quite answer our question. We are interested if the drugs have an effect and if so, which drug is the best? To do this we need to conduct a significance test on the predictor to see if the effect is significantly different than zero. For binomial distributions this can be done with a chisq test. 
+
+```{r}
+
+anova(m2, test="Chisq") ## chisq test on predictor from model
+```
+
+Here we see that degrees freedom from the model (i.e. n-1), the residual deviance and DF again from the model output. The p-value here identifies that the effect is significant. R for some reason refers to the Chi-sq value from this test as "deviance". Judging by the high Chi-sq value, we can believe that the effect of this predictor is significant. We now must determine which drug treatment is most effective. 
+
+### 2.2 Pairwise comparisons and packages
+
+To see which drug is most effective, we need to conduct pairwise comparisons. There are many packages that are available in R to do this. One of the easier ones to work with is `lsmeans`. First, we need to go over how to install a package. 
+
+```{r}
+#install.packages("lsmeans")
+```
+
+Once you use that command a prompt will come up to specify a mirror. This means a repository online that you can download the package from. There are many all around the world, but pick the one closest to your location for reduced latency. 
+
+After the package has successfully installed, load it using the `library` command. Notice that when you install you put the package in quotations, but when you load there are no quotes. 
+
+```{r}
+library(lsmeans)
+```
+
+Now that the package has been installed and loaded we can use functions from that package. From now on, you will only need to load the package when you run a new project and not install it. 
+
+The syntax for conducting a pairwise comparison is model, type of comparison (in this case pairwise), and lastly adjustment type. Tukey is a common technique that is also used for ANOVAs. 
+
+```{r}
+lsmeans(m2, pairwise~predictor, adjust="tukey") ##conduct pairwise comparisons on predictor
+```
+
+The output of this function provides a lot of information including the model statistics for each of the groups. However, the most relative content now to our question is the p.value to determine which groups were different from one another and the estimate to see in what direction. Here, we can see that the only group that is significantly different is drug3. This drug was more effective than a control and drug1, although it had a similar cure rate as drug2. This is a typical workflow for a GLM that begins by testing the effect of the predictor and is followed by a pairwise comparison to determine where the significance can be attributed to. 
+
+### 2.3 Different types of GLMs
+
+There are many different types of GLMs that are possible in addition to the `binomial` family. Some of them involve changing the family in the glm function to the most appropriate data distribution. Other commons families include:
+
+family          | type of data 
+----------------|------------------------------
+binomial        | binary (y = 0,1) or proportion (0<y<1).
+poisson         | discrete count (y = 0, 1, 2, 3 ... i).
+gamma           | continuous data that is right skewed, positive, and is on the log scale.
+quasibinomial   | binary or proportion data that is overdispersed
+quasipoisson    | discrete count data that is overdispersed. 
+
+Quasibinomial and quasipoisson compensate for overdispersed data with an extra parameter `ϕ`. Theta here is a dispersion parameter that attempts to describe additional variance that cannot be explained by the distribution alone. As a general rule of thumb follow this workflow.
+
+![](GLM.workflow.jpg)
+
+### 2.4 Try it yourself
+
+Here is an example of bird surveys in Southern Ontario in forests, urban parks, and city centers. Determine if there is a difference between the habitats and which was the greatest. 
+
+```{r}
+bird.data <- data.frame(species.rich =c(rpois(50,5),rpois(50,3),rpois(50,3.1)),habitat = c(rep("forest",50),rep("urban.parks",50),rep("city",50))) ## load data
+```

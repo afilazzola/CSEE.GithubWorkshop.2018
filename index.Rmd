@@ -1,0 +1,68 @@
+---
+title: "Using R and GitHub: reproducibility in research"
+date: "July 18, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<div style="width:500px; height=350px">
+![](images/alex.jpg)
+</div>
+
+York University | 
+----------------|-----------------------------------
+JUly 18 2018   | **Instructor**: [Alex Filazzola](http://www.filazzola.info)
+1:00 - 4:00 pm   | **Co-instructors**: 
+
+##General Information
+
+Statistical software that are also programming languages, such as R, are excellent tools for conducting analyses of biological data. However, many users are not taking full advantage of their capabilities. This workshop is an introduction to some of the resources that are available to R users that have been developed and implemented in the larger programming community. No prior knowledge of R will be necessary, but this workshop will not be an introduction to R basics. Instead, we will focus on using R Studio and Github to easily sync your data and analyses online. Within this workshop we will explore how to maximize reproducibility, collaborate internationally on statistical analyses, present data summaries, data management, and the promotion of open science
+
+**Who**: The course is aimed at R beginners and novice to intermediate analysts. You do not need to have previous knowledge of R.
+
+**Where**: University of Guelph: 50 Stone Road East, Guelph. Room 2114 DB (TEL). [Google maps](https://goo.gl/maps/fLeskquHNZs)
+
+**Requirements**: Participants should bring a laptop with a Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) with administrative privileges. If you want to work along during tutorial, you must have both Git & R studio installed on your own computer (See below for instructions). However, you are still welcome to attend because all examples will be presented via a projector in the classroom. 
+
+**Contact**: Please contact alex.filazzola@outlook.com for more information.
+
+## Schedule
+
+[Live Notepad](https://docs.google.com/document/d/1len4qcM-EkEMOl0NuNROyqlqMruqg4B4TZm4OS0NPoQ/edit)
+
+Time   | Goal
+-------|------------
+1:10   | Meet & greet. Test software
+1:30  | [R arithmetic and simple commands](R.basics//r.basics.html)
+2:00  | [R environment and visualization](R.basics//r.basics.html)
+2:15  | *coffee break*
+2:30  | [Introduction to GLMs](GLM.intro//GLM.intro.html)
+3:00  | [Conducting GLMs in R](GLM.intro//GLM.intro.html)
+3:30  | Activity
+3:45  | Final discussions
+
+
+## Software
+
+Please install Git **before** installing R Studio. This allows seamless integration between the two programs because R Studio looks for Git on your computer, but Git does not look for R Studio. In the past, installation in the opposite order has been known to create issues. If you already installed R Studio and Git, but do not see the Git Tab in R Studio then you can follow [this support page](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) to troubleshoot. 
+
+
+#### Git
+
+Git is a version control system that lets you track who made changes to what when and has options for easily updating a shared or public version of your code on github.com. You will need a supported web browser (current versions of Chrome, Firefox or Safari, or Internet Explorer version 9 or above).
+
+You will need an account at github.com for parts of the Git lesson. Basic GitHub accounts are free and premium accounts are free to students. We encourage you to create a GitHub account if you don't have one already. Please consider what personal information you'd like to reveal. For example, you may want to review these instructions for keeping your email address private provided at GitHub.
+
+Information on how to install Git for each OS is provided by [Software Carpentry](https://software-carpentry.org/) and can be found [here](install.html)
+
+#### R
+
+[R](http://www.r-project.org/) is a programming language that is especially powerful for data exploration, visualization, and statistical analysis. To interact with R, we use [RStudio](http://www.rstudio.com/).
+
+
+Windows        |   Mac OS  X   |      Linux
+---------------|---------------|---------------
+Install R by downloading and running [this .exe](http://cran.r-project.org/bin/windows/base/release.htm) file from [CRAN](http://cran.r-project.org/index.html). Please also install the [RStudio IDE](http://www.rstudio.com/ide/download/desktop).| Install R by downloading and running [this .pkg](http://cran.r-project.org/bin/macosx/R-latest.pkg) file from [CRAN](http://cran.r-project.org/index.html). Please also install the [RStudio IDE](http://www.rstudio.com/ide/download/desktop).|You can download the binary files for your distribution from [CRAN](http://cran.r-project.org/index.html). Please also install the [RStudio IDE](http://www.rstudio.com/ide/download/desktop)
