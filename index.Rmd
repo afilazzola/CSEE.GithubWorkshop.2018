@@ -37,9 +37,9 @@ Time   | Goal
 -------|------------
 1:10   | Meet & greet. Test software
 1:45  | [Github Introduction](Github//Github.html)
-2:00  | [Github and R-Studio](R.basics//r.basics.html)
-2:15  | *coffee break*
-2:30  | [Introduction to GLMs](GLM.intro//GLM.intro.html)
+2:15  | [Github and R-Studio](R.basics//r.basics.html)
+2:30  | *coffee break*
+2:45  | [Introduction to GLMs](GLM.intro//GLM.intro.html)
 3:00  | [Conducting GLMs in R](GLM.intro//GLM.intro.html)
 3:30  | Activity
 3:45  | Final discussions
