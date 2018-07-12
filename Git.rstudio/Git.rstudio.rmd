@@ -59,5 +59,26 @@ The next step here is to click on the file you want to commit and click `stage`.
 So far, this is essentially the same thing we did online. The additional step here is the `Push` and `Pull`. Pushing essentialy sends all your committed changes to the repository and pulling brings any changes from your repository to your computer. It is the equivalent of a one-directional sync method and it is what makes your computer communicate online. Normally, before you start any project you want to pull to make sure the repo you are using is currently up to date. We know ours is currently update because we just cloned it a few minutes ago. That means we can push this recently modified file and have it populate online. If our repo was not to date, you will have a warning to pull first before you push. 
 Congratulations, you have successfully synced your R Studio with Github!
 
+### 2.3 Hangman Round 2
 
+We are going to do this again, but this time all through the R Studio console. Step 1 will be for **Person B** to go online and clone **Person A** repository to their computer. Once cloned and opened in R, they need to do the following:
+
+- Open the hangman file
+- Make a change
+- Open commit panel
+- Stage the modified file
+- Write a commit message
+- Press `Commit`
+- Push Repo
+
+Then the other person's turn to `Pull` their current repository to make it up to date with the new change. Open the file and then complete the above steps. If all goes well you can do this on repeat without ever having to go near your web browser again. 
   
+### 2.4 A brief word about conflicts
+
+A conflict is actually somewhat difficult to accomplish, but when it does happen, is complicated to resolve. If two people are using the same repository and are working on it with the current version. One person makes a change to a specific line to a specific file, commits and pushes the file. Then the other person does the exact same thing. The problem is that the second person's edits are trying to be pushed into a file that has been updated recently since the person open and saved it. What typically happens is that the file writes two lines of gibberish above and below the conflict with both edits embeded in between. It is then up to the user who figure out what to do and delete the gibberish. 
+
+The good news is that if you are working on different files in the repo this will not happen. Or if you're working on the same file, but different lines, this will not happen. It is only when working on the same file, on the same line, roughly at the same time, that a conflict will arise. The chances of this occurring with a collaborator I have found to be extremely low, but it can happen, so I have mentioned it here so you understand what that means. 
+
+For more information on conflicts you can read it [here](https://help.github.com/articles/resolving-a-merge-conflict-on-github/)
+
+![](Rstudio5.png)
