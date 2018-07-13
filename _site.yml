@@ -4,10 +4,12 @@ navbar:
   left:
     - text: "info"
       href: index.html
-    - text: "R.basics"
-      href: r.basics.html
-    - text: "GLM.intro"
-      href: GLM.intro.html
+    - text: "Github"
+      href: 
+    - text: "Github.Rstudio"
+      href: 
+    - text: "Reports"
+      href: 
 output_dir: "."
 output:
   html_document:

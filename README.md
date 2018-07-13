@@ -16,5 +16,3 @@ Statistical software that are also programming languages, such as R, are excelle
 **Where**: University of Guelph: 50 Stone Road East, Guelph. [Rozanski Hall](CampusMap.pdf)
 
 **Requirements**: Participants should bring a laptop with a Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) with administrative privileges. If you want to work along during tutorial, you must have both Git & R studio installed on your own computer (See below for instructions). However, you are still welcome to attend because all examples will be presented via a projector in the classroom. 
-
-**Contact**: Please contact alex.filazzola@outlook.com for more information.
