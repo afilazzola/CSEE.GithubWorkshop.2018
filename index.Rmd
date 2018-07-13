@@ -14,8 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Guelph University | 
 ----------------|-----------------------------------
-JUly 18 2018   | **Instructor**: [Alex Filazzola](http://www.filazzola.info)
-1:00 - 4:00 pm   | **Co-instructors**: 
+July 18 2018   | **Instructor**: [Alex Filazzola](http://www.filazzola.info)
+1:00 - 4:00 pm   | **Co-instructors**: TBD
 
 ##General Information
 
@@ -23,7 +23,7 @@ Statistical software that are also programming languages, such as R, are excelle
 
 **Who**: The course is aimed at R beginners and novice to intermediate analysts. You do not need to have previous knowledge of R.
 
-**Where**: University of Guelph: 50 Stone Road East, Guelph. Room 2114 DB (TEL). [Google maps](https://goo.gl/maps/fLeskquHNZs)
+**Where**: University of Guelph: 50 Stone Road East, Guelph. [Rozanski Hall](CampusMap.pdf)
 
 **Requirements**: Participants should bring a laptop with a Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) with administrative privileges. If you want to work along during tutorial, you must have both Git & R studio installed on your own computer (See below for instructions). However, you are still welcome to attend because all examples will be presented via a projector in the classroom. 
 
@@ -36,11 +36,11 @@ Statistical software that are also programming languages, such as R, are excelle
 Time   | Goal
 -------|------------
 1:10   | Meet & greet. Test software
-1:45  | [Github Introduction](Github//Github.html)
-2:15  | [Github and R-Studio](R.basics//r.basics.html)
+1:45  | [Github Introduction]
+2:15  | [Github and R Studio]
 2:30  | *coffee break*
-2:45  | [Introduction to GLMs](GLM.intro//GLM.intro.html)
-3:00  | [Conducting GLMs in R](GLM.intro//GLM.intro.html)
+2:45  | [Creating Reports with R Studio]
+3:00  | [Publish Reports and websites]
 3:30  | Activity
 3:45  | Final discussions
 
