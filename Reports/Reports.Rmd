@@ -79,7 +79,51 @@ abline(m1, col="Red", lwd=2)
 
 To compare the distance traveled based on speed, we conducted a linear model with distance as the response variable and speed as the predictor variable. We found that speed significantly predicted distance traveled (F = 89.6, p < 0.001, R2 = 0.64).
 
-### 3.4 
+The full dataset is available below:
+
+```{r}
+knitr::kable(cars)
+```
+
+### 3.4 Other chunk features
+
+There are a few other manipulations you can add to your R Chunk that could come in handy when presenting your findings. Two other features I use often are the `warning` and `message`. Warnings often arise during your data analysis, and sometimes they can be disregarded. For example, when NAs are treated as zeros and you want them to be treated as zeros. Having this message appear in your report can make it look untidy or that you are ignoring something that is potentially relevant. Of course, you may not always want to ignore warnings, but assuming you do, adding it within the R chunch label can help `{r warning=FALSE}`. The same is true with messages. These most commonly arise when you load packages and certain functions are over-written (i.e. masked) by new functions. I tend to mute both of these options by setting `{r message=FALSE, warning=FALSE}`. 
+
+For example, here is what happens when I load the package dplyr without these settings
+
+```{r}
+library(dplyr)
+```
+
+Now we try it again with the warning and message set to false. 
+
+```{r warning=FALSE, message=FALSE}
+## first remove the previously loaded package
+detach("package:dplyr", unload=TRUE)
+## re-load the package
+library(dplyr)
+```
+
+Another issue we sometimes run into is the size of figures that sometimes does not fit within the page or looks awkward. Taking a look at our figure from before, we may decide that it looks too bunched up.
+
+```{r}
+## Plot the cars speed by distance
+plot(cars$speed,cars$dist, xlab="Speed (mph)", ylab="Distance (miles)", pch=19, cex=1.3, cex.axis=1.3, cex.lab=1.5)
+```
+
+Using `fig.width` or `fig.height` you can fit the plot better into the page and stretch it out.
+
+```{r, fig.width=10, fig.height=8}
+## Plot the cars speed by distance
+plot(cars$speed,cars$dist, xlab="Speed (mph)", ylab="Distance (miles)", pch=19, cex=1.3, cex.axis=1.3, cex.lab=1.5)
+```
+
+
+
+
+
+
+
 
 
 
