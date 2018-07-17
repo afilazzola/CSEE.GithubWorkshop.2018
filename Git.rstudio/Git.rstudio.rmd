@@ -73,7 +73,44 @@ We are going to do this again, but this time all through the R Studio console. S
 
 Then the other person's turn to `Pull` their current repository to make it up to date with the new change. Open the file and then complete the above steps. If all goes well you can do this on repeat without ever having to go near your web browser again. 
   
-### 2.4 A brief word about conflicts
+### 2.4 Troubleshooting Git through RStudio
+
+There are intances where the R studio interface may not work properly with Github. Although they are rare, there are three specific occasions I have encountered frequently enough that I should mention here. These are
+
+1. Large file issues
+2. Commit locks
+3. Undoing a commit
+
+Github does not handle large files well or at all. Any single file over 25 mB will receive a warning for being too large and it simply will not handle a file over 100 MB. This is actually interesting because there is no size requirement in the actual repository and you can have repositories that are hundreds of GB in size. Just as long as no individual file exceeds 100 MB. Solutions? Well the easiest way is to split up the file. However, if that is not an option, then I recommend [Github LFS](https://git-lfs.github.com/). Unfortunately, I don't have the time to get too deep into how to use LFS, standing for Large File Storage, or how to install it. I recommend looking at the link though if that is an issue that applies to you. One key thing here is that LFS requires you to use the Git Shell rather than the R Studio interface. To access the shell you click on `More` under the Git tab in R Studio and then `Shell`. That will bring up a command prompt type console that you will use. 
+
+Commit locks can happen between computers or even repeated pushing of the same computer. They are infrequent and usually arise from a glitch that prevents further stages or commits. Normally when you stage a change it will take some time before the check mark appears. If files are large or if you are committing lots of file at once, there is often a longer delay before the checkmark appears. However, if you notice the file is never staging then it is likely a result of a commit lock. The solution is to delete the lock file, which prevents you from commiting. First you need to open your Git Shell. Then type the following which removes the file index.lock
+
+> rm -f .git/index.lock
+
+![](commitlock.jpg)
+
+You also perform regular operations through Git Shell. For example you can commit all your files and push them with the following files respectively
+
+> git add -a commit "your message"
+
+> git push 
+
+On average the Shell tends to be faster than the GUI in R Studio. 
+
+The final troubleshoot issue is undoing changes that have been commited before you have pushed. There are two ways to remove a commit, the soft way and the hard way. Soft resets delete the commit from your Github interface, but preserve the changes in your repository. This method in itself could be a troubleshooting strategy if you noticed a particular commit is causing problems. The way this is done is to reset the Github interface relative to the current stage of commits. The code below will conduct a soft reset of Git and will repopulate the modified changes into your Git tab on R Studio. 
+
+> git reset --soft HEAD~1
+
+Here `HEAD~1` means the commit before the current head. 
+
+Let's try this an example. Made a modification to your hangman file, save it, and the file will populate in the Git panel in R Studio. Click on `Commit`, stage it, and add your message. Once it has been commited, open up the `Shell` and type the above command. What you will notice is that the change re-appears in your Git panel and the changes remain in the file you edited. 
+
+The other type of reset is a hard reset. A hard reset will remove the commits in Git and ** WILL DELETE THE CHANGES IN YOUR WORKING DIRECTORY**. This can be a desired choice, especially when you have accidentally manipulated your code into a way that it no longer works and cannot be easily fixed. Reverting to the last commit is a key feature of version control and is similar to opening an older document. However, be careful because it can permanently delete a significant amount of work depending on the last time you committed to the repository.  
+
+> git reset --hard HEAD~1
+
+
+### 2.5 A brief word about conflicts
 
 A conflict is actually somewhat difficult to accomplish, but when it does happen, is complicated to resolve. If two people are using the same repository and are working on it with the current version. One person makes a change to a specific line to a specific file, commits and pushes the file. Then the other person does the exact same thing. The problem is that the second person's edits are trying to be pushed into a file that has been updated recently since the person open and saved it. What typically happens is that the file writes two lines of gibberish above and below the conflict with both edits embeded in between. It is then up to the user who figure out what to do and delete the gibberish. 
 
