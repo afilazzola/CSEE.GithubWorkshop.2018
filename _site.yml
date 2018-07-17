@@ -5,11 +5,13 @@ navbar:
     - text: "info"
       href: index.html
     - text: "Github"
-      href: 
-    - text: "Github.Rstudio"
-      href: 
+      href: Github/Github.html
+    - text: "Rstudio"
+      href: Git.rstudio/Git.rstudio.html
     - text: "Reports"
-      href: 
+      href: Reports/Reports.html
+    - text: "Websites"
+      href: Website/website.html 
 output_dir: "."
 output:
   html_document:

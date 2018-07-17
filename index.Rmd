@@ -15,9 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 Guelph University | 
 ----------------|-----------------------------------
 July 18 2018   | **Instructor**: [Alex Filazzola](http://www.filazzola.info)
-1:00 - 4:00 pm   | **Co-instructors**: TBD
+1:00 - 4:00 pm   | **Co-instructors**: Katrina Gaibisels
 
-##General Information
+## General Information
 
 Statistical software that are also programming languages, such as R, are excellent tools for conducting analyses of biological data. However, many users are not taking full advantage of their capabilities. This workshop is an introduction to some of the resources that are available to R users that have been developed and implemented in the larger programming community. No prior knowledge of R will be necessary, but this workshop will not be an introduction to R basics. Instead, we will focus on using R Studio and Github to easily sync your data and analyses online. Within this workshop we will explore how to maximize reproducibility, collaborate internationally on statistical analyses, present data summaries, data management, and the promotion of open science
 
@@ -36,12 +36,11 @@ Statistical software that are also programming languages, such as R, are excelle
 Time   | Goal
 -------|------------
 1:10   | Meet & greet. Test software
-1:45  | [Github Introduction]
-2:15  | [Github and R Studio]
+1:45  | [Github Introduction](Github/Github.html)
+2:15  | [Github and R Studio](Git.rstudio/Git.rstudio.html)
 2:30  | *coffee break*
-2:45  | [Creating Reports with R Studio]
-3:00  | [Publish Reports and websites]
-3:30  | Activity
+3:00  | [Creating Reports with R Studio](Reports/Reports.html)
+3:30  | [Publish Reports and websites](Website/website.html)
 3:45  | Final discussions
 
 
@@ -66,3 +65,9 @@ Information on how to install Git for each OS is provided by [Software Carpentry
 Windows        |   Mac OS  X   |      Linux
 ---------------|---------------|---------------
 Install R by downloading and running [this .exe](http://cran.r-project.org/bin/windows/base/release.htm) file from [CRAN](http://cran.r-project.org/index.html). Please also install the [RStudio IDE](http://www.rstudio.com/ide/download/desktop).| Install R by downloading and running [this .pkg](http://cran.r-project.org/bin/macosx/R-latest.pkg) file from [CRAN](http://cran.r-project.org/index.html). Please also install the [RStudio IDE](http://www.rstudio.com/ide/download/desktop).|You can download the binary files for your distribution from [CRAN](http://cran.r-project.org/index.html). Please also install the [RStudio IDE](http://www.rstudio.com/ide/download/desktop)
+
+## Other workshops
+
+If you enjoyed this workshop and were interested in learning more, I also run a workshop on R-basics and Introduction to Generalized Linear Modelling (GLM) found [here](https://afilazzola.github.io/YorkU.GLM.2017-04-28/). I also have a short introduction on using [Functions in R](https://afilazzola.github.io/Functions.workshop.YorkU2017/). 
+
+You can find similar style workshops, usually that are longer and go into more detail, with [Software Carpentry](https://software-carpentry.org/). They have teachers available globally and cover all forms of programming beyond R. 
